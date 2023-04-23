@@ -10,5 +10,7 @@
         "xenorio",
         "yingasamo",
         "bennolenn"
-    ]
+    ],
+
+    attachment_retention: '1h'
 }

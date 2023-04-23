@@ -25,6 +25,7 @@ const cors = require('cors');
 const fs = require('fs/promises');
 const mongo = require('./mongo')
 const hat = require('hat')
+const ms = require('ms')
 
 const app = express()
 const server = http.createServer(app)
@@ -79,6 +80,11 @@ setTimeout(async () => {
         })
 
 }, 1000)
+
+// Purge Attachments
+setInterval(() => {
+    mongo.query('Attachments', {timestamp: {$lt: Date.now() - ms(config.get('attachment_retention'))}})
+}, ms('5m'))
 
 fs.readdir(__dirname + '/ws_events/server')
     .then(files => {
