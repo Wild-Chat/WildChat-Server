@@ -1,0 +1,14 @@
+{
+    port: 3030,
+
+    database: {
+        url: 'mongodb://127.0.0.1:27017',
+        name: 'WildChat'
+    },
+
+    admins: [
+        "xenorio",
+        "yingasamo",
+        "bennolenn"
+    ]
+}
