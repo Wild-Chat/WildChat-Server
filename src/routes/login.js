@@ -24,7 +24,6 @@ const stats = require('../stats')
 
 module.exports = {
     async post(req, res) {
-
         const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress
 
         let name = req.body.name
@@ -75,6 +74,9 @@ module.exports = {
         } else {
             user.token = token
             user.login = Date.now()
+
+            user.badges = user.badges - 7
+
             user.badges = user.badges | gender
             mongo.update('Users', { _id: user._id }, user)
         }
