@@ -75,7 +75,7 @@ module.exports = {
             user.token = token
             user.login = Date.now()
 
-            user.badges = user.badges >> 3
+            user.badges = user.badges & 0b11111000
 
             user.badges = user.badges | gender
             mongo.update('Users', { _id: user._id }, user)
